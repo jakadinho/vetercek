@@ -7,8 +7,8 @@ import urllib
 
 os.chdir("temp")
 
-#               0-5               5-10       10-15           15-20              20-25        25-30            30-35            35-40         crna
-#colors = [(245, 245, 245),(205, 224, 218),(120, 205, 176),(124, 186, 199),(119, 174, 215),(160, 173, 228),(200, 173, 227)]
+# colors used for different wind speed
+#               0-5               5-10       10-15           15-20              20-25        25-30            30-35            35-40         black
 colors = [(245, 245, 245),(205, 224, 218),(119, 199, 172),(120, 187, 194),(120, 173, 213),(160, 173, 221),(200, 173, 227),(221, 167, 241),(0, 1, 1)]
 
 def distance(color1, color2):
@@ -53,7 +53,6 @@ def compute_average_image_color(img):
     naj=counter.most_common(2)
     
     if len(naj)  > 1:
-        #hitrost=((naj[0][0]*naj[0][1])+(naj[1][0]*naj[1][1])+(naj[2][0]*naj[2][1]))/((naj[0][1])+(naj[1][1])+(naj[2][1]))
         hitrost=((naj[0][0]*naj[0][1])+(naj[1][0]*naj[1][1]))/((naj[0][1])+(naj[1][1]))
     else:
         hitrost = naj[0][0]
@@ -145,33 +144,33 @@ def aladin(danes, ura, kater):
             
         return    
 
-#aladin(datum, "006", "vm-va10m_hr-w_")
-#aladin(datum, "009", "vm-va10m_hr-w_")
-#aladin(datum, "012", "vm-va10m_hr-w_")
-#aladin(datum, "015", "vm-va10m_hr-w_")
-#aladin(datum, "018", "vm-va10m_hr-w_")
-#aladin(datum, "021", "vm-va10m_hr-w_")
-#aladin(datum, "024", "vm-va10m_hr-w_")
-#aladin(datum, "027", "vm-va10m_hr-w_")
-#aladin(datum, "030", "vm-va10m_hr-w_")
-#aladin(datum, "033", "vm-va10m_hr-w_")
-#aladin(datum, "036", "vm-va10m_hr-w_")
-#aladin(datum, "039", "vm-va10m_hr-w_")
-#aladin(datum, "042", "vm-va10m_hr-w_")
+aladin(datum, "006", "vm-va10m_hr-w_")
+aladin(datum, "009", "vm-va10m_hr-w_")
+aladin(datum, "012", "vm-va10m_hr-w_")
+aladin(datum, "015", "vm-va10m_hr-w_")
+aladin(datum, "018", "vm-va10m_hr-w_")
+aladin(datum, "021", "vm-va10m_hr-w_")
+aladin(datum, "024", "vm-va10m_hr-w_")
+aladin(datum, "027", "vm-va10m_hr-w_")
+aladin(datum, "030", "vm-va10m_hr-w_")
+aladin(datum, "033", "vm-va10m_hr-w_")
+aladin(datum, "036", "vm-va10m_hr-w_")
+aladin(datum, "039", "vm-va10m_hr-w_")
+aladin(datum, "042", "vm-va10m_hr-w_")
 aladin(datum, "045", "vm-va10m_hr-w_")
 
 
-#aladin(datum, "006", "vm-va10m_si-sw_")
-#aladin(datum, "009", "vm-va10m_si-sw_")
-#aladin(datum, "012", "vm-va10m_si-sw_")
-#aladin(datum, "015", "vm-va10m_si-sw_")
-#aladin(datum, "018", "vm-va10m_si-sw_")
-#aladin(datum, "021", "vm-va10m_si-sw_")
-#aladin(datum, "024", "vm-va10m_si-sw_")
-#aladin(datum, "027", "vm-va10m_si-sw_")
-#aladin(datum, "030", "vm-va10m_si-sw_")
-#aladin(datum, "033", "vm-va10m_si-sw_")
-#aladin(datum, "036", "vm-va10m_si-sw_")
-#aladin(datum, "039", "vm-va10m_si-sw_")
-#aladin(datum, "042", "vm-va10m_si-sw_")
-#aladin(datum, "045", "vm-va10m_si-sw_")
+aladin(datum, "006", "vm-va10m_si-sw_")
+aladin(datum, "009", "vm-va10m_si-sw_")
+aladin(datum, "012", "vm-va10m_si-sw_")
+aladin(datum, "015", "vm-va10m_si-sw_")
+aladin(datum, "018", "vm-va10m_si-sw_")
+aladin(datum, "021", "vm-va10m_si-sw_")
+aladin(datum, "024", "vm-va10m_si-sw_")
+aladin(datum, "027", "vm-va10m_si-sw_")
+aladin(datum, "030", "vm-va10m_si-sw_")
+aladin(datum, "033", "vm-va10m_si-sw_")
+aladin(datum, "036", "vm-va10m_si-sw_")
+aladin(datum, "039", "vm-va10m_si-sw_")
+aladin(datum, "042", "vm-va10m_si-sw_")
+aladin(datum, "045", "vm-va10m_si-sw_")
