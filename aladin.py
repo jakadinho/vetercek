@@ -106,14 +106,7 @@ def aladin(danes, ura, kater):
             hitrost_nov = compute_average_image_color(img_nov)
 
             mydata=[('cas',ura),('var','slo_istra'),('slo_liz',hitrost_liz),('slo_krk',hitrost_krk),('slo_pre',hitrost_pre),('slo_sav',hitrost_sav),('slo_umag',hitrost_umag),('slo_nov',hitrost_nov)]    
-
-            print "cas: ", ura  
-            print "hitrost liznjan: ", hitrost_liz  
-            print "hitrost krk: ", hitrost_krk  
-            print "hitrost preluka: ", hitrost_pre 
-            print "hitrost savudrija: ", hitrost_sav
-            print "hitrost umag: ", hitrost_umag
-            print "hitrost novigrad: ", hitrost_nov
+            print mydata
         
         #primorska
         elif kater == "vm-va10m_si-sw_" :   
@@ -131,11 +124,8 @@ def aladin(danes, ura, kater):
             img_por.save("por.jpg")
 
             mydata=[('cas',ura),('var','slo_pri'),('slo_mj',hitrost_mj),('slo_bar',hitrost_bar),('slo_por',hitrost_por)]    
-            
-            print "cas: ", ura  
-            print "hitrost MJ: ", hitrost_mj          
-            print "hitrost barcole: ", hitrost_bar          
-            print "hitrost portoroz: ", hitrost_por          
+            print mydata
+        
        
         #send data to website
         from post import post
