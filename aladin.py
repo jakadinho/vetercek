@@ -65,7 +65,11 @@ datum = today.strftime('%Y%m%d')
 #glede na UTC cas
 import time
 ura = int(time.strftime("%H"))
-if ura > 7 and ura < 17:
+timesaving=time.localtime()[8]
+
+if timesaving == 0 and ura > 3 and ura < 15:
+    am_pm='00'
+elif timesaving == 1 and ura > 4 and ura < 16:
     am_pm='00'
 else:
     am_pm='12'
@@ -107,7 +111,7 @@ def aladin(danes, ura, kater):
             hitrost_nov = compute_average_image_color(img_nov)
 
             mydata=[('cas',ura),('var','slo_istra'),('slo_liz',hitrost_liz),('slo_krk',hitrost_krk),('slo_pre',hitrost_pre),('slo_sav',hitrost_sav),('slo_umag',hitrost_umag),('slo_nov',hitrost_nov)]    
-            print mydata
+            #print mydata
         
         #primorska
         elif kater == "vm-va10m_si-sw_" :   
@@ -125,7 +129,7 @@ def aladin(danes, ura, kater):
             img_por.save("por.jpg")
 
             mydata=[('cas',ura),('var','slo_pri'),('slo_mj',hitrost_mj),('slo_bar',hitrost_bar),('slo_por',hitrost_por)]    
-            print mydata
+            #print mydata
         
        
         #send data to website
@@ -165,3 +169,7 @@ aladin(datum, "036", "vm-va10m_si-sw_")
 aladin(datum, "039", "vm-va10m_si-sw_")
 aladin(datum, "042", "vm-va10m_si-sw_")
 aladin(datum, "045", "vm-va10m_si-sw_")
+
+filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
+for f in filelist:
+    os.remove(f)

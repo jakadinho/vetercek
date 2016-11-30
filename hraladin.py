@@ -128,3 +128,6 @@ aladin(datum, "39", "SENJ")
 aladin(datum, "42", "SENJ")
 aladin(datum, "45", "SENJ")
 
+filelist = [ f for f in os.listdir(".") if f.endswith(".gif") ]
+for f in filelist:
+    os.remove(f)
