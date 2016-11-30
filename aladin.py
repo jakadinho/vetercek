@@ -65,17 +65,18 @@ datum = today.strftime('%Y%m%d')
 #glede na UTC cas
 import time
 ura = int(time.strftime("%H"))
-if ura > 7 :
-    am_pm='12'
-else:
+if ura > 7 and ura < 17:
     am_pm='00'
+else:
+    am_pm='12'
+
+print am_pm 
     
 
 
 def aladin(danes, ura, kater):
     
     link = "http://meteo.arso.gov.si/uploads/probase/www/model/aladin/field/ad_"+danes+"-"+am_pm+"00_"+kater+ura+".png"
-
     check=urllib.urlopen(link)
     urlcheck=check.getcode()
     if urlcheck == 200 :
