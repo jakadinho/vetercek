@@ -4,8 +4,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def direction(img):
-	img_rgb = cv2.imread('liz.png')
+def direction(source):
+	img_rgb = cv2.imread(source+'.png')
 	img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
 
 	directions=['n','ne','nw','s','se']
@@ -24,3 +24,6 @@ def direction(img):
 		#cv2.imwrite('res.png',img_rgb)
 
 		print 'dir', direction, count
+		# Show blobs
+		cv2.imshow("Keypoints", img_rgb)
+		cv2.waitKey(0)

@@ -95,7 +95,6 @@ def aladin(danes, ura, kater):
             #liznjan
             img_liz=img.crop((198, 411, 57+198, 52+411))
             hitrost_liz = compute_average_image_color(img_liz)
-            img_liz.save('liz.png')
 
             #krk
             img_krk=img.crop((453, 304, 54+453, 38+304))
@@ -104,7 +103,7 @@ def aladin(danes, ura, kater):
             img_pre=img.crop((337, 121, 62+337, 45+121))
             hitrost_pre = compute_average_image_color(img_pre)
             img_pre.save('pre.png')
-            direction(img_pre)
+            direction('pre')
             #sav
             img_sav=img.crop((21, 41, 21+19, 41+30))
             hitrost_sav = compute_average_image_color(img_sav)
