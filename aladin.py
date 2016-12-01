@@ -4,6 +4,7 @@ import math
 import collections
 import os
 import urllib
+from dir import direction
 
 os.chdir("temp")
 
@@ -94,12 +95,16 @@ def aladin(danes, ura, kater):
             #liznjan
             img_liz=img.crop((198, 411, 57+198, 52+411))
             hitrost_liz = compute_average_image_color(img_liz)
+            img_liz.save('liz.png')
+
             #krk
             img_krk=img.crop((453, 304, 54+453, 38+304))
             hitrost_krk = compute_average_image_color(img_krk)
             #pre
             img_pre=img.crop((337, 121, 62+337, 45+121))
             hitrost_pre = compute_average_image_color(img_pre)
+            img_pre.save('pre.png')
+            direction(img_pre)
             #sav
             img_sav=img.crop((21, 41, 21+19, 41+30))
             hitrost_sav = compute_average_image_color(img_sav)
@@ -125,14 +130,14 @@ def aladin(danes, ura, kater):
 
             #portoroz
             img_por=img.crop((154, 308, 154+26, 308+38))
-            hitrost_por = compute_average_image_color(img_por) 
-            img_por.save("por.jpg")
+            hitrost_por = compute_average_image_color(img_por)
+            img_por.save('pri.jpg')
 
             mydata=[('cas',ura),('var','slo_pri'),('slo_mj',hitrost_mj),('slo_bar',hitrost_bar),('slo_por',hitrost_por)]    
             #print mydata
         
        
-        #send data to website
+		#send data to website
         from post import post
         post(mydata)
 
@@ -140,36 +145,36 @@ def aladin(danes, ura, kater):
         return    
 
 aladin(datum, "006", "vm-va10m_hr-w_")
-aladin(datum, "009", "vm-va10m_hr-w_")
-aladin(datum, "012", "vm-va10m_hr-w_")
-aladin(datum, "015", "vm-va10m_hr-w_")
-aladin(datum, "018", "vm-va10m_hr-w_")
-aladin(datum, "021", "vm-va10m_hr-w_")
-aladin(datum, "024", "vm-va10m_hr-w_")
-aladin(datum, "027", "vm-va10m_hr-w_")
-aladin(datum, "030", "vm-va10m_hr-w_")
-aladin(datum, "033", "vm-va10m_hr-w_")
-aladin(datum, "036", "vm-va10m_hr-w_")
-aladin(datum, "039", "vm-va10m_hr-w_")
-aladin(datum, "042", "vm-va10m_hr-w_")
-aladin(datum, "045", "vm-va10m_hr-w_")
+#aladin(datum, "009", "vm-va10m_hr-w_")
+#aladin(datum, "012", "vm-va10m_hr-w_")
+#aladin(datum, "015", "vm-va10m_hr-w_")
+#aladin(datum, "018", "vm-va10m_hr-w_")
+#aladin(datum, "021", "vm-va10m_hr-w_")
+#aladin(datum, "024", "vm-va10m_hr-w_")
+#aladin(datum, "027", "vm-va10m_hr-w_")
+#aladin(datum, "030", "vm-va10m_hr-w_")
+#aladin(datum, "033", "vm-va10m_hr-w_")
+#aladin(datum, "036", "vm-va10m_hr-w_")
+#aladin(datum, "039", "vm-va10m_hr-w_")
+#aladin(datum, "042", "vm-va10m_hr-w_")
+#aladin(datum, "045", "vm-va10m_hr-w_")
 
 
-aladin(datum, "006", "vm-va10m_si-sw_")
-aladin(datum, "009", "vm-va10m_si-sw_")
-aladin(datum, "012", "vm-va10m_si-sw_")
-aladin(datum, "015", "vm-va10m_si-sw_")
-aladin(datum, "018", "vm-va10m_si-sw_")
-aladin(datum, "021", "vm-va10m_si-sw_")
-aladin(datum, "024", "vm-va10m_si-sw_")
-aladin(datum, "027", "vm-va10m_si-sw_")
-aladin(datum, "030", "vm-va10m_si-sw_")
-aladin(datum, "033", "vm-va10m_si-sw_")
-aladin(datum, "036", "vm-va10m_si-sw_")
-aladin(datum, "039", "vm-va10m_si-sw_")
-aladin(datum, "042", "vm-va10m_si-sw_")
-aladin(datum, "045", "vm-va10m_si-sw_")
+#aladin(datum, "006", "vm-va10m_si-sw_")
+#aladin(datum, "009", "vm-va10m_si-sw_")
+#aladin(datum, "012", "vm-va10m_si-sw_")
+#aladin(datum, "015", "vm-va10m_si-sw_")
+#aladin(datum, "018", "vm-va10m_si-sw_")
+#aladin(datum, "021", "vm-va10m_si-sw_")
+#aladin(datum, "024", "vm-va10m_si-sw_")
+#aladin(datum, "027", "vm-va10m_si-sw_")
+#aladin(datum, "030", "vm-va10m_si-sw_")
+#aladin(datum, "033", "vm-va10m_si-sw_")
+#aladin(datum, "036", "vm-va10m_si-sw_")
+#aladin(datum, "039", "vm-va10m_si-sw_")
+#aladin(datum, "042", "vm-va10m_si-sw_")
+#aladin(datum, "045", "vm-va10m_si-sw_")
 
-filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
-for f in filelist:
-    os.remove(f)
+#filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
+#for f in filelist:
+#    os.remove(f)
