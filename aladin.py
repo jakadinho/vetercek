@@ -111,24 +111,26 @@ def aladin(danes, ura, kater):
             dir_pre=direction('pre')
 
             #sav
-            img_sav=img.crop((21, 41, 21+19, 41+30))
+            img_sav=img.crop((19, 41, 19+21, 41+30))
             hitrost_sav = compute_average_image_color(img_sav)
             img_sav.save('sav.png')
             dir_sav=direction('sav')
 
             #umag
-            img_umag=img.crop((26, 72, 29+26, 28+72))
+            img_umag=img.crop((24, 72, 24+26, 28+72))
             hitrost_umag = compute_average_image_color(img_umag)
             img_umag.save('umag.png')
             dir_umag=direction('umag')
 
              #nov
-            img_nov=img.crop((35, 135, 34+23, 135+22))
+            img_nov=img.crop((33, 135, 33+23, 135+22))
             hitrost_nov = compute_average_image_color(img_nov)
             img_nov.save('nov.png')
             dir_nov=direction('nov')
 
-            mydata=[('cas',ura),('var','slo_istra'),('slo_liz',dir_liz,hitrost_liz),('slo_krk',dir_krk,hitrost_krk),('slo_pre',dir_pre,hitrost_pre),('slo_sav',dir_sav,hitrost_sav),('slo_umag',dir_umag,hitrost_umag),('slo_nov',dir_nov,hitrost_nov)]    
+            mydata=[('cas',ura),('var','slo_istra'),('slo_liz',hitrost_liz),('slo_krk',hitrost_krk),('slo_pre',hitrost_pre),('slo_sav',hitrost_sav),('slo_umag',hitrost_umag),('slo_nov',hitrost_nov),('smer_liz',dir_liz),('smer_krk',dir_krk),('smer_pre',dir_pre),('smer_sav',dir_sav),('smer_umag',dir_umag),('smer_nov',dir_nov)]   
+  
+
             #print mydata
         
         #primorska
@@ -136,17 +138,22 @@ def aladin(danes, ura, kater):
             #MJ
             img_mj=img.crop((142, 159, 142+25, 159+20))
             hitrost_mj = compute_average_image_color(img_mj)    
+            img_mj.save('mj.png')
+            dir_mj=direction('mj')
 
             #barcole
             img_bar=img.crop((204, 184, 204+42, 184+36))
             hitrost_bar = compute_average_image_color(img_bar)    
+            img_bar.save('bar.png')
+            dir_bar=direction('bar')
 
             #portoroz
             img_por=img.crop((154, 308, 154+26, 308+38))
             hitrost_por = compute_average_image_color(img_por)
-            img_por.save('pri.jpg')
+            img_por.save('por.png')
+            dir_por=direction('por')
 
-            mydata=[('cas',ura),('var','slo_pri'),('slo_mj',hitrost_mj),('slo_bar',hitrost_bar),('slo_por',hitrost_por)]    
+            mydata=[('cas',ura),('var','slo_pri'),('slo_mj',hitrost_mj),('slo_bar',hitrost_bar),('slo_por',hitrost_por),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por)]    
             #print mydata
         
        
@@ -158,10 +165,10 @@ def aladin(danes, ura, kater):
         return    
 
 #aladin(datum, "006", "vm-va10m_hr-w_")
-aladin(datum, "009", "vm-va10m_hr-w_")
+#aladin(datum, "009", "vm-va10m_hr-w_")
 #aladin(datum, "012", "vm-va10m_hr-w_")
 #aladin(datum, "015", "vm-va10m_hr-w_")
-#aladin(datum, "018", "vm-va10m_hr-w_")
+aladin(datum, "018", "vm-va10m_hr-w_")
 #aladin(datum, "021", "vm-va10m_hr-w_")
 #aladin(datum, "024", "vm-va10m_hr-w_")
 #aladin(datum, "027", "vm-va10m_hr-w_")
