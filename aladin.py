@@ -95,26 +95,40 @@ def aladin(danes, ura, kater):
             #liznjan
             img_liz=img.crop((198, 411, 57+198, 52+411))
             hitrost_liz = compute_average_image_color(img_liz)
+            img_liz.save('liz.png')
+            dir_liz=direction('liz')
 
             #krk
             img_krk=img.crop((453, 304, 54+453, 38+304))
             hitrost_krk = compute_average_image_color(img_krk)
+            img_krk.save('krk.png')
+            dir_krk=direction('krk')
+
             #pre
             img_pre=img.crop((337, 121, 62+337, 45+121))
             hitrost_pre = compute_average_image_color(img_pre)
             img_pre.save('pre.png')
-            direction('pre')
+            dir_pre=direction('pre')
+
             #sav
             img_sav=img.crop((21, 41, 21+19, 41+30))
             hitrost_sav = compute_average_image_color(img_sav)
+            img_sav.save('sav.png')
+            dir_sav=direction('sav')
+
             #umag
             img_umag=img.crop((26, 72, 29+26, 28+72))
             hitrost_umag = compute_average_image_color(img_umag)
-            #nov
+            img_umag.save('umag.png')
+            dir_umag=direction('umag')
+
+             #nov
             img_nov=img.crop((35, 135, 34+23, 135+22))
             hitrost_nov = compute_average_image_color(img_nov)
+            img_nov.save('nov.png')
+            dir_nov=direction('nov')
 
-            mydata=[('cas',ura),('var','slo_istra'),('slo_liz',hitrost_liz),('slo_krk',hitrost_krk),('slo_pre',hitrost_pre),('slo_sav',hitrost_sav),('slo_umag',hitrost_umag),('slo_nov',hitrost_nov)]    
+            mydata=[('cas',ura),('var','slo_istra'),('slo_liz',dir_liz,hitrost_liz),('slo_krk',dir_krk,hitrost_krk),('slo_pre',dir_pre,hitrost_pre),('slo_sav',dir_sav,hitrost_sav),('slo_umag',dir_umag,hitrost_umag),('slo_nov',dir_nov,hitrost_nov)]    
             #print mydata
         
         #primorska
@@ -143,8 +157,8 @@ def aladin(danes, ura, kater):
             
         return    
 
-aladin(datum, "006", "vm-va10m_hr-w_")
-#aladin(datum, "009", "vm-va10m_hr-w_")
+#aladin(datum, "006", "vm-va10m_hr-w_")
+aladin(datum, "009", "vm-va10m_hr-w_")
 #aladin(datum, "012", "vm-va10m_hr-w_")
 #aladin(datum, "015", "vm-va10m_hr-w_")
 #aladin(datum, "018", "vm-va10m_hr-w_")

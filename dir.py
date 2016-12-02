@@ -4,26 +4,41 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def direction(source):
-	img_rgb = cv2.imread(source+'.png')
+def direction(img):
+	img_rgb = cv2.imread(img+'.png')
 	img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
+	all_dir=[]
 
-	directions=['n','ne','nw','s','se']
+	directions=[('n','n'),('s','s'),('se','se1'),('w','w1'),('ne','ne1','ne2','ne3')]
 	#directions=['ne']
-	for direction in directions:   
-		template = cv2.imread(direction+'.png',0)
-		w, h = template.shape[::-1]
-
+	for directions2 in directions:
+		smer =directions2[0]
 		count=0 
-		res = cv2.matchTemplate(img_gray,template,cv2.TM_CCOEFF_NORMED)
-		threshold = 0.85
-		loc = np.where( res >= threshold)
-		for pt in zip(*loc[::-1]):
-			cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0,0,255), 2)
-			count=count+1
-		#cv2.imwrite('res.png',img_rgb)
 
-		print 'dir', direction, count
-		# Show blobs
-		cv2.imshow("Keypoints", img_rgb)
-		cv2.waitKey(0)
+		for direction in directions2:
+		
+			template = cv2.imread(direction+'.png',0)
+			w, h = template.shape[::-1]
+
+			res = cv2.matchTemplate(img_gray,template,cv2.TM_CCOEFF_NORMED)
+			threshold = 0.80
+			loc = np.where( res >= threshold)
+			for pt in zip(*loc[::-1]):
+				cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0,0,255), 2)
+				count=count+1
+			#cv2.imshow("Results", img_rgb)
+			#cv2.waitKey(0)
+
+		#print smer, count
+		all_dir.append([smer, count])
+
+
+	cv2.imshow("Results", img_rgb)
+	cv2.waitKey(0)
+	most_common=sorted(all_dir,key=lambda x: x[1], reverse=True)
+
+	if most_common[0][1] > 0 :   
+		return most_common[0][0]
+	else :
+		return ' '
+	
