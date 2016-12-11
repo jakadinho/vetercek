@@ -19,8 +19,8 @@ def direction2(img):
 	edged=cv2.Canny(th1,127,200)
 	#return edged
 
-	(img2,cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
+	(img2,cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
 	kot=[]
 	up_c=0
@@ -46,6 +46,7 @@ def direction2(img):
 			box = np.int0(box)
 			#print box
 			cv2.drawContours(img,[box],0,(0,0,255),1)
+
 
 			a= math.hypot(box[1][0] - box[0][0], box[1][1] - box[0][1])
 			b= math.hypot(box[3][0] - box[0][0], box[3][1] - box[0][1])
@@ -85,7 +86,7 @@ def direction2(img):
 				#pol=np.array([[box[3][0], box[3][1]],[box[2][0], box[2][1]], [xos, yos], [xos2, yos2]])
 				#cv2.drawContours(img,[pol],0,(0,0,255),1)
 
-			r = 3 # accuracy
+			r = 5 # accuracy
 			dots_down=[]
 			dots_up=[]
 			for dot in c:
@@ -102,13 +103,20 @@ def direction2(img):
 					cv2.circle(img, (dot[0][0],dot[0][1]), 2, (255, 0, 0), -1)
 					#print nov
 
+			#if contour is closed
+			if cv2.isContourConvex(c):
+				down=np.array(dots_down)
+				up=np.array(dots_up)
+				area_down = cv2.contourArea(down)
+				area_up = cv2.contourArea(up)
+
+			else:
+				area_down = 20
+				area_up = 1				
 
 
-			down=np.array(dots_down)
-			up=np.array(dots_up)
-			area_down = cv2.contourArea(down)
-			area_up = cv2.contourArea(up)
 
+			#print area_up
 			#print area_down
 			#print area_up
 			#print angle
