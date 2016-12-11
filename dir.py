@@ -45,10 +45,10 @@ def direction2(img):
 			box = cv2.boxPoints(rect)
 			box = np.int0(box)
 			#print box
-			#cv2.drawContours(img,[box],0,(0,0,255),1)
+			cv2.drawContours(img,[box],0,(0,0,255),1)
 
-			a= math.hypot(box[1][0] - box[0][0], box[1][1] - box[0][1])*0.264583333
-			b= math.hypot(box[3][0] - box[0][0], box[3][1] - box[0][1])*0.264583333
+			a= math.hypot(box[1][0] - box[0][0], box[1][1] - box[0][1])
+			b= math.hypot(box[3][0] - box[0][0], box[3][1] - box[0][1])
 
 			if a>b: 
 				xos=(box[0][0]+box[1][0])/2
@@ -61,10 +61,11 @@ def direction2(img):
 				xos2a=(box[0][0]+box[3][0])/2
 				yos2a=(box[0][1]+box[3][1])/2
 
-				bbPath = mplPath.Path(np.array([[box[0][0], box[0][1]],
-									 [xos, yos],
-									 [xos2, yos2],
-									 [box[3][0], box[3][1]]]))
+				bbPath = mplPath.Path(np.array([[box[0][0], box[0][1]],[xos, yos],[xos2, yos2],[box[3][0], box[3][1]]]))
+				bbPath2 = mplPath.Path(np.array([[box[1][0], box[1][1]], [xos, yos], [xos2, yos2],[box[2][0], box[2][1]]]))
+
+				#pol=np.array([[box[1][0], box[1][1]], [xos, yos], [xos2, yos2],[box[2][0], box[2][1]]])
+				#cv2.drawContours(img,[pol],0,(0,0,255),1)
 
 
 			elif b>a: 	
@@ -72,38 +73,36 @@ def direction2(img):
 				yos=(box[1][1]+box[2][1])/2
 				xos2=(box[0][0]+box[3][0])/2
 				yos2=(box[0][1]+box[3][1])/2
+
 				xosa=(box[0][0]+box[1][0])/2
 				yosa=(box[0][1]+box[1][1])/2
 				xos2a=(box[2][0]+box[3][0])/2
 				yos2a=(box[2][1]+box[3][1])/2
 
-				bbPath = mplPath.Path(np.array([[box[0][0], box[0][1]],
-									 [box[1][0], box[1][1]],
-									 [xos, yos],
-									 [xos2, yos2]]))
+				bbPath = mplPath.Path(np.array([[box[0][0], box[0][1]],[box[1][0], box[1][1]], [xos, yos], [xos2, yos2]]))
+				bbPath2 = mplPath.Path(np.array([[box[3][0], box[3][1]],[box[2][0], box[2][1]], [xos, yos], [xos2, yos2]]))
 
+				#pol=np.array([[box[3][0], box[3][1]],[box[2][0], box[2][1]], [xos, yos], [xos2, yos2]])
+				#cv2.drawContours(img,[pol],0,(0,0,255),1)
 
 			r = 3 # accuracy
 			dots_down=[]
 			dots_up=[]
 			for dot in c:
 				result= bbPath.contains_point((dot[0][0], dot[0][1]),radius=r) or bbPath.contains_point((dot[0][0], dot[0][1]),radius=-r)
-			
+				result2= bbPath2.contains_point((dot[0][0], dot[0][1]),radius=r) or bbPath2.contains_point((dot[0][0], dot[0][1]),radius=-r)			
 
 				if result == True : 	
 					nov = [dot[0][0], dot[0][1]]
 					dots_down.append(nov)
 
-				else : 
+				if result2 == True : 
 					nov = [dot[0][0], dot[0][1]]
 					dots_up.append(nov)
-					#cv2.circle(img, (dot[0][0],dot[0][1]), 2, (255, 0, 0), -1)
+					cv2.circle(img, (dot[0][0],dot[0][1]), 2, (255, 0, 0), -1)
 					#print nov
 
-				bbPath = mplPath.Path(np.array([[box[0][0], box[0][1]],
-									 [box[1][0], box[1][1]],
-									 [xos, yos],
-									 [xos2, yos2]]))
+
 
 			down=np.array(dots_down)
 			up=np.array(dots_up)
@@ -122,7 +121,9 @@ def direction2(img):
 				rads = atan2(-dy,dx)
 				rads %= 2*pi
 				degs = degrees(rads)
-				#print degs
+				#print 'st:'
+				#print round(degs,-1)
+				#print round(angle,-1)
 				kot.append(round(degs,-1))
 
 
@@ -152,8 +153,8 @@ def direction2(img):
 		counts = [(j,i) for i,j in d.items()]
 		count, max_elm = max(counts)
 
-
 		#print max_elm
+
 
 		#preracunaj kot
 		if up_c > down_c and max_elm > 180:
@@ -167,6 +168,8 @@ def direction2(img):
 		else:
 			max_elm=max_elm
 
+
+		#print max_elm
 
 
 		if max_elm >= 337.5 and max_elm < 360:
@@ -191,12 +194,7 @@ def direction2(img):
 			smer=0
 
 		return smer
-
-
-
-
-	#print smer
-	#return smer
+		#print smer
 
 
 
