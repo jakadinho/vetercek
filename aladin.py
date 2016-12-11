@@ -4,7 +4,9 @@ import math
 import collections
 import os
 import urllib
-from dir import direction
+from dir import direction2
+import numpy as np
+
 
 os.chdir("temp")
 
@@ -95,66 +97,57 @@ def aladin(danes, ura, kater):
             #liznjan
             img_liz=img.crop((198, 411, 57+198, 52+411))
             hitrost_liz = compute_average_image_color(img_liz)
-            img_liz.save('liz.png')
-            dir_liz=direction('liz')
+            dir_liz=direction2(np.array(img.crop((205, 415, 205+56, 44+415))))
 
             #krk
             img_krk=img.crop((453, 304, 54+453, 38+304))
             hitrost_krk = compute_average_image_color(img_krk)
-            img_krk.save('krk.png')
-            dir_krk=direction('krk')
+            dir_krk=direction2(np.array(img.crop((450, 300, 450+51, 300+52))))
 
             #pre
             img_pre=img.crop((337, 121, 62+337, 45+121))
             hitrost_pre = compute_average_image_color(img_pre)
-            img_pre.save('pre.png')
-            dir_pre=direction('pre')
+            dir_pre=direction2(np.array(img.crop((340, 114, 59+340, 58+114))))
 
             #sav
             img_sav=img.crop((19, 41, 19+21, 41+30))
             hitrost_sav = compute_average_image_color(img_sav)
-            img_sav.save('sav.png')
-            dir_sav=direction('sav')
+            dir_sav=direction2(np.array(img.crop((4, 38, 4+47, 38+34))))
 
             #umag
             img_umag=img.crop((24, 72, 24+26, 28+72))
             hitrost_umag = compute_average_image_color(img_umag)
-            img_umag.save('umag.png')
-            dir_umag=direction('umag')
+            dir_umag=direction2(np.array(img.crop((11, 65, 11+56, 65+41))))
 
              #nov
             img_nov=img.crop((33, 135, 33+23, 135+22))
             hitrost_nov = compute_average_image_color(img_nov)
-            img_nov.save('nov.png')
-            dir_nov=direction('nov')
+            dir_nov=direction2(np.array(img.crop((35, 273, 35+34, 273+30))))
 
             mydata=[('cas',ura),('var','slo_istra'),('slo_liz',hitrost_liz),('slo_krk',hitrost_krk),('slo_pre',hitrost_pre),('slo_sav',hitrost_sav),('slo_umag',hitrost_umag),('slo_nov',hitrost_nov),('smer_liz',dir_liz),('smer_krk',dir_krk),('smer_pre',dir_pre),('smer_sav',dir_sav),('smer_umag',dir_umag),('smer_nov',dir_nov)]   
   
 
-            #print mydata
+            print mydata
         
         #primorska
         elif kater == "vm-va10m_si-sw_" :   
             #MJ
-            img_mj=img.crop((142, 159, 142+25, 159+20))
+            img_mj=img.crop((134, 138, 134+52, 138+50))
             hitrost_mj = compute_average_image_color(img_mj)    
-            img_mj.save('mj.png')
-            dir_mj=direction('mj')
+            dir_mj=direction2(np.array(img.crop((139, 146, 38+139, 146+38))))
 
             #barcole
             img_bar=img.crop((204, 184, 204+42, 184+36))
             hitrost_bar = compute_average_image_color(img_bar)    
-            img_bar.save('bar.png')
-            dir_bar=direction('bar')
+            dir_bar=direction2(np.array(img.crop((195, 171, 195+71, 171+56))))
 
             #portoroz
-            img_por=img.crop((154, 308, 154+26, 308+38))
+            img_por=img.crop((147, 316, 147+35, 316+33))
             hitrost_por = compute_average_image_color(img_por)
-            img_por.save('por.png')
-            dir_por=direction('por')
+            dir_por=direction2(np.array(img.crop((116, 317, 73+116, 30+317))))
 
             mydata=[('cas',ura),('var','slo_pri'),('slo_mj',hitrost_mj),('slo_bar',hitrost_bar),('slo_por',hitrost_por),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por)]    
-            #print mydata
+            print mydata
         
        
 		#send data to website
@@ -164,37 +157,38 @@ def aladin(danes, ura, kater):
             
         return    
 
-#aladin(datum, "006", "vm-va10m_hr-w_")
-#aladin(datum, "009", "vm-va10m_hr-w_")
-#aladin(datum, "012", "vm-va10m_hr-w_")
-#aladin(datum, "015", "vm-va10m_hr-w_")
+aladin(datum, "006", "vm-va10m_hr-w_")
+aladin(datum, "009", "vm-va10m_hr-w_")
+aladin(datum, "012", "vm-va10m_hr-w_")
+aladin(datum, "015", "vm-va10m_hr-w_")
 aladin(datum, "018", "vm-va10m_hr-w_")
-#aladin(datum, "021", "vm-va10m_hr-w_")
-#aladin(datum, "024", "vm-va10m_hr-w_")
-#aladin(datum, "027", "vm-va10m_hr-w_")
-#aladin(datum, "030", "vm-va10m_hr-w_")
-#aladin(datum, "033", "vm-va10m_hr-w_")
-#aladin(datum, "036", "vm-va10m_hr-w_")
-#aladin(datum, "039", "vm-va10m_hr-w_")
-#aladin(datum, "042", "vm-va10m_hr-w_")
-#aladin(datum, "045", "vm-va10m_hr-w_")
+aladin(datum, "021", "vm-va10m_hr-w_")
+aladin(datum, "024", "vm-va10m_hr-w_")
+aladin(datum, "027", "vm-va10m_hr-w_")
+aladin(datum, "030", "vm-va10m_hr-w_")
+aladin(datum, "033", "vm-va10m_hr-w_")
+aladin(datum, "036", "vm-va10m_hr-w_")
+aladin(datum, "039", "vm-va10m_hr-w_")
+aladin(datum, "042", "vm-va10m_hr-w_")
+aladin(datum, "045", "vm-va10m_hr-w_")
 
 
-#aladin(datum, "006", "vm-va10m_si-sw_")
-#aladin(datum, "009", "vm-va10m_si-sw_")
-#aladin(datum, "012", "vm-va10m_si-sw_")
-#aladin(datum, "015", "vm-va10m_si-sw_")
-#aladin(datum, "018", "vm-va10m_si-sw_")
-#aladin(datum, "021", "vm-va10m_si-sw_")
-#aladin(datum, "024", "vm-va10m_si-sw_")
-#aladin(datum, "027", "vm-va10m_si-sw_")
-#aladin(datum, "030", "vm-va10m_si-sw_")
-#aladin(datum, "033", "vm-va10m_si-sw_")
-#aladin(datum, "036", "vm-va10m_si-sw_")
-#aladin(datum, "039", "vm-va10m_si-sw_")
-#aladin(datum, "042", "vm-va10m_si-sw_")
-#aladin(datum, "045", "vm-va10m_si-sw_")
+aladin(datum, "006", "vm-va10m_si-sw_")
+aladin(datum, "009", "vm-va10m_si-sw_")
+aladin(datum, "012", "vm-va10m_si-sw_")
+aladin(datum, "015", "vm-va10m_si-sw_")
+aladin(datum, "018", "vm-va10m_si-sw_")
+aladin(datum, "021", "vm-va10m_si-sw_")
+aladin(datum, "024", "vm-va10m_si-sw_")
+aladin(datum, "027", "vm-va10m_si-sw_")
+aladin(datum, "030", "vm-va10m_si-sw_")
+aladin(datum, "033", "vm-va10m_si-sw_")
+aladin(datum, "036", "vm-va10m_si-sw_")
+aladin(datum, "039", "vm-va10m_si-sw_")
+aladin(datum, "042", "vm-va10m_si-sw_")
+aladin(datum, "045", "vm-va10m_si-sw_")
 
-#filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
-#for f in filelist:
-#    os.remove(f)
+filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
+for f in filelist:
+    os.remove(f)
+
