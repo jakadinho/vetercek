@@ -127,6 +127,15 @@ aladin(datum, "36", "SENJ")
 aladin(datum, "39", "SENJ")
 aladin(datum, "42", "SENJ")
 aladin(datum, "45", "SENJ")
+aladin(datum, "48", "SENJ")
+aladin(datum, "51", "SENJ")
+aladin(datum, "54", "SENJ")
+aladin(datum, "57", "SENJ")
+aladin(datum, "60", "SENJ")
+aladin(datum, "63", "SENJ")
+aladin(datum, "66", "SENJ")
+aladin(datum, "69", "SENJ")
+aladin(datum, "72", "SENJ")
 
 filelist = [ f for f in os.listdir(".") if f.endswith(".gif") ]
 for f in filelist:
