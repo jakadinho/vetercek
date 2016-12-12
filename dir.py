@@ -6,6 +6,10 @@ import math
 import matplotlib.path as mplPath
 from math import atan2, degrees, pi
 
+def area(p):
+    return 0.5 * abs(sum(x0*y1 - x1*y0
+                         for ((x0, y0), (x1, y1)) in segments(p)))
+
 
 def direction2(img):
 
@@ -30,9 +34,9 @@ def direction2(img):
 
 	for c in cnts:
 		area = cv2.contourArea(c)
-		#print area
+		print area
 		cv2.drawContours(img,[c],0,(0,255,0),1)
-		if area > 500 and area < 1650:	
+		if area > 500 and area < 1650 and len(c) > 5:	
 			#cv2.drawContours(img,[c],0,(0,255,0),1)
 			(x,y),radius = cv2.minEnclosingCircle(c)
 			center = (int(x),int(y))
@@ -107,12 +111,16 @@ def direction2(img):
 			#if cv2.isContourConvex(c):
 			down=np.array(dots_down)
 			up=np.array(dots_up)
-			area_down = cv2.contourArea(down)
-			area_up = cv2.contourArea(up)
+			#area_down = cv2.contourArea(down)
+			#area_up = cv2.contourArea(up)
+
+
+			area_up = cv2.contourArea(np.array(up).reshape((-1,1,2)).astype(np.int32))
+			area_down = cv2.contourArea(np.array(down).reshape((-1,1,2)).astype(np.int32))
 
 			#else:
-				#area_down = 20
-				#area_up = 1	
+			#area_down = 20
+			#area_up = 1	
 				#print 'not convex'			
 
 

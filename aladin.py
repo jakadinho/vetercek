@@ -117,7 +117,7 @@ def aladin(danes, ura, kater):
             #umag
             img_umag=img.crop((24, 72, 24+26, 28+72))
             hitrost_umag = compute_average_image_color(img_umag)
-            dir_umag=direction2(np.array(img.crop((13, 65, 13+56, 65+41))))
+            dir_umag=direction2(np.array(img.crop((6, 71, 6+35, 71+25))))
 
              #nov
             img_nov=img.crop((33, 135, 33+23, 135+22))
