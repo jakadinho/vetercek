@@ -20,7 +20,7 @@ def direction2(img):
 	#return edged
 
 
-	(img2,cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+	(img2,cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
 	kot=[]
 	up_c=0
@@ -104,15 +104,16 @@ def direction2(img):
 					#print nov
 
 			#if contour is closed
-			if cv2.isContourConvex(c):
-				down=np.array(dots_down)
-				up=np.array(dots_up)
-				area_down = cv2.contourArea(down)
-				area_up = cv2.contourArea(up)
+			#if cv2.isContourConvex(c):
+			down=np.array(dots_down)
+			up=np.array(dots_up)
+			area_down = cv2.contourArea(down)
+			area_up = cv2.contourArea(up)
 
-			else:
-				area_down = 20
-				area_up = 1				
+			#else:
+				#area_down = 20
+				#area_up = 1	
+				#print 'not convex'			
 
 
 
@@ -162,6 +163,12 @@ def direction2(img):
 		count, max_elm = max(counts)
 
 		#print max_elm
+		if up_c > down_c :
+			print 'up'
+
+		else:
+			print 'down'
+
 
 
 		#preracunaj kot
@@ -177,7 +184,7 @@ def direction2(img):
 			max_elm=max_elm
 
 
-		#print max_elm
+		print max_elm
 
 
 		if max_elm >= 337.5 and max_elm < 360:
@@ -185,11 +192,11 @@ def direction2(img):
 		elif max_elm >=0 and max_elm <22.5:
 			smer = 'W'
 		elif max_elm >=22.5 and max_elm <67.5:
-			smer = 'SE'
+			smer = 'SW'
 		elif max_elm >=67.5 and max_elm <112.5:
 			smer = 'S'
 		elif max_elm >=112.5 and max_elm <157.5:
-			smer = 'SW'
+			smer = 'SE'
 		elif max_elm >=157.5 and max_elm <202.5:
 			smer = 'E'
 		elif max_elm >=202.5 and max_elm <247.5:

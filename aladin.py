@@ -112,7 +112,7 @@ def aladin(danes, ura, kater):
             #sav
             img_sav=img.crop((19, 41, 19+21, 41+30))
             hitrost_sav = compute_average_image_color(img_sav)
-            dir_sav=direction2(np.array(img.crop((4, 38, 4+47, 38+34))))
+            dir_sav=direction2(np.array(img.crop((3, 36, 3+31, 36+27))))
 
             #umag
             img_umag=img.crop((24, 72, 24+26, 28+72))
@@ -171,7 +171,15 @@ aladin(datum, "036", "vm-va10m_hr-w_")
 aladin(datum, "039", "vm-va10m_hr-w_")
 aladin(datum, "042", "vm-va10m_hr-w_")
 aladin(datum, "045", "vm-va10m_hr-w_")
-
+aladin(datum, "048", "vm-va10m_hr-w_")
+aladin(datum, "051", "vm-va10m_hr-w_")
+aladin(datum, "054", "vm-va10m_hr-w_")
+aladin(datum, "057", "vm-va10m_hr-w_")
+aladin(datum, "060", "vm-va10m_hr-w_")
+aladin(datum, "063", "vm-va10m_hr-w_")
+aladin(datum, "066", "vm-va10m_hr-w_")
+aladin(datum, "069", "vm-va10m_hr-w_")
+aladin(datum, "072", "vm-va10m_hr-w_")
 
 aladin(datum, "006", "vm-va10m_si-sw_")
 aladin(datum, "009", "vm-va10m_si-sw_")
@@ -187,6 +195,16 @@ aladin(datum, "036", "vm-va10m_si-sw_")
 aladin(datum, "039", "vm-va10m_si-sw_")
 aladin(datum, "042", "vm-va10m_si-sw_")
 aladin(datum, "045", "vm-va10m_si-sw_")
+
+aladin(datum, "048", "vm-va10m_si-sw_")
+aladin(datum, "051", "vm-va10m_si-sw_")
+aladin(datum, "054", "vm-va10m_si-sw_")
+aladin(datum, "057", "vm-va10m_si-sw_")
+aladin(datum, "060", "vm-va10m_si-sw_")
+aladin(datum, "063", "vm-va10m_si-sw_")
+aladin(datum, "066", "vm-va10m_si-sw_")
+aladin(datum, "069", "vm-va10m_si-sw_")
+aladin(datum, "072", "vm-va10m_si-sw_")
 
 filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
 for f in filelist:
