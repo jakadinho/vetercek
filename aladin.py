@@ -157,6 +157,9 @@ def aladin(danes, ura, kater):
             
         return    
 
+aladin(datum, "036", "vm-va10m_hr-w_")
+
+
 aladin(datum, "006", "vm-va10m_hr-w_")
 aladin(datum, "009", "vm-va10m_hr-w_")
 aladin(datum, "012", "vm-va10m_hr-w_")

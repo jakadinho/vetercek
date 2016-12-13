@@ -55,7 +55,7 @@ def direction2(img):
 			a= math.hypot(box[1][0] - box[0][0], box[1][1] - box[0][1])
 			b= math.hypot(box[3][0] - box[0][0], box[3][1] - box[0][1])
 
-			if a>b: 
+			if a>b or a==b: 
 				xos=(box[0][0]+box[1][0])/2
 				yos=(box[0][1]+box[1][1])/2
 				xos2=(box[2][0]+box[3][0])/2
@@ -65,6 +65,7 @@ def direction2(img):
 				yosa=(box[1][1]+box[2][1])/2
 				xos2a=(box[0][0]+box[3][0])/2
 				yos2a=(box[0][1]+box[3][1])/2
+
 
 				bbPath = mplPath.Path(np.array([[box[0][0], box[0][1]],[xos, yos],[xos2, yos2],[box[3][0], box[3][1]]]))
 				bbPath2 = mplPath.Path(np.array([[box[1][0], box[1][1]], [xos, yos], [xos2, yos2],[box[2][0], box[2][1]]]))
@@ -84,6 +85,8 @@ def direction2(img):
 				xos2a=(box[2][0]+box[3][0])/2
 				yos2a=(box[2][1]+box[3][1])/2
 
+
+				
 				bbPath = mplPath.Path(np.array([[box[0][0], box[0][1]],[box[1][0], box[1][1]], [xos, yos], [xos2, yos2]]))
 				bbPath2 = mplPath.Path(np.array([[box[3][0], box[3][1]],[box[2][0], box[2][1]], [xos, yos], [xos2, yos2]]))
 
@@ -94,6 +97,7 @@ def direction2(img):
 			dots_down=[]
 			dots_up=[]
 			for dot in c:
+				#print bbPath
 				result= bbPath.contains_point((dot[0][0], dot[0][1]),radius=r) or bbPath.contains_point((dot[0][0], dot[0][1]),radius=-r)
 				result2= bbPath2.contains_point((dot[0][0], dot[0][1]),radius=r) or bbPath2.contains_point((dot[0][0], dot[0][1]),radius=-r)			
 
