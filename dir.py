@@ -34,9 +34,9 @@ def direction2(img):
 
 	for c in cnts:
 		area = cv2.contourArea(c)
-		print area
+		#print area
 		cv2.drawContours(img,[c],0,(0,255,0),1)
-		if area > 500 and area < 1650 and len(c) > 5:	
+		if area > 500 and area < 1750 and len(c) > 5:	
 			#cv2.drawContours(img,[c],0,(0,255,0),1)
 			(x,y),radius = cv2.minEnclosingCircle(c)
 			center = (int(x),int(y))
@@ -55,7 +55,7 @@ def direction2(img):
 			a= math.hypot(box[1][0] - box[0][0], box[1][1] - box[0][1])
 			b= math.hypot(box[3][0] - box[0][0], box[3][1] - box[0][1])
 
-			if a>b or a==b: 
+			if a>b : 
 				xos=(box[0][0]+box[1][0])/2
 				yos=(box[0][1]+box[1][1])/2
 				xos2=(box[2][0]+box[3][0])/2
@@ -74,7 +74,7 @@ def direction2(img):
 				#cv2.drawContours(img,[pol],0,(0,0,255),1)
 
 
-			elif b>a: 	
+			else: 	
 				xos=(box[1][0]+box[2][0])/2
 				yos=(box[1][1]+box[2][1])/2
 				xos2=(box[0][0]+box[3][0])/2
@@ -137,28 +137,18 @@ def direction2(img):
 			if area_up > area_down:
 				up_c=up_c+1
 				#kot.append(round(angle,-1)) 	
-				dx = xosa - xos2a
-				dy = yosa - yos2a
-				rads = atan2(-dy,dx)
-				rads %= 2*pi
-				degs = degrees(rads)
-				#print 'st:'
+				print 'UP'
 				#print round(degs,-1)
 				#print round(angle,-1)
-				kot.append(round(degs,-1))
+				kot.append(round(angle,-1))
 
 
 			else:
 				down_c=down_c+1
 				#kot.append(round(angle,-1)) 
 				down_c=down_c+1
-				dx = xos2a - xosa
-				dy = yos2a - yosa
-				rads = atan2(-dy,dx)
-				rads %= 2*pi
-				degs = degrees(rads)
-				#print degs
-				kot.append(round(degs,-1)) 	
+				print 'DOWN'
+				kot.append(round(angle,-1)) 	
 
 
 			cv2.drawContours(img, [c], -1, (0, 255, 255), 1)
@@ -172,56 +162,41 @@ def direction2(img):
 		for elm in kot:
 			d[elm] = d.get(elm, 0) + 1
 		counts = [(j,i) for i,j in d.items()]
-		count, max_elm = max(counts)
-
-		#print max_elm
-		if up_c > down_c :
-			print 'up'
-
-		else:
-			print 'down'
-
-
+		count, angle = max(counts)
 
 		#preracunaj kot
-		if up_c > down_c and max_elm > 180:
-			max_elm=360-max_elm
-
-		elif up_c > down_c:
-			max_elm=max_elm
-
-		elif max_elm < 180:
-			max_elm=max_elm+180
-		else:
-			max_elm=max_elm
+		if down_c > up_c and angle > 90:
+			#print 'up'
+			angle =180+angle
+		elif up_c > down_c and angle < 90:
+			angle =180+angle
 
 
-		print max_elm
 
-
-		if max_elm >= 337.5 and max_elm < 360:
-			smer = 'W'
-		elif max_elm >=0 and max_elm <22.5:
-			smer = 'W'
-		elif max_elm >=22.5 and max_elm <67.5:
-			smer = 'SW'
-		elif max_elm >=67.5 and max_elm <112.5:
-			smer = 'S'
-		elif max_elm >=112.5 and max_elm <157.5:
-			smer = 'SE'
-		elif max_elm >=157.5 and max_elm <202.5:
-			smer = 'E'
-		elif max_elm >=202.5 and max_elm <247.5:
-			smer = 'NE'
-		elif max_elm >=247.5 and max_elm <292.5:
+		if angle >= 337.5 and angle <= 360:
 			smer = 'N'
-		elif max_elm >=292.5 and max_elm <337.5:
+		elif angle >=0 and angle <22.5:
+			smer = 'N'
+		elif angle >=22.5 and angle <67.5:
+			smer = 'NE'
+		elif angle >=67.5 and angle <112.5:
+			smer = 'E'
+		elif angle >=112.5 and angle <157.5:
+			smer = 'SE'
+		elif angle >=157.5 and angle <202.5:
+			smer = 'S'
+		elif angle >=202.5 and angle <247.5:
+			smer = 'SW'
+		elif angle >=247.5 and angle <292.5:
+			smer = 'W'
+		elif angle >=292.5 and angle <337.5:
 			smer = 'NW'
 		else:
 			smer=0
 
 		return smer
 		#print smer
+		#print angle
 
 
 

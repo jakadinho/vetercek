@@ -117,14 +117,14 @@ def aladin(danes, ura, kater):
             #umag
             img_umag=img.crop((24, 72, 24+26, 28+72))
             hitrost_umag = compute_average_image_color(img_umag)
-            dir_umag=direction2(np.array(img.crop((6, 71, 6+35, 71+25))))
+            #dir_umag=direction2(np.array(img.crop((6, 71, 6+35, 71+25))))
 
              #nov
             img_nov=img.crop((33, 135, 33+23, 135+22))
             hitrost_nov = compute_average_image_color(img_nov)
             dir_nov=direction2(np.array(img.crop((35, 273, 35+34, 273+30))))
 
-            mydata=[('cas',ura),('var','slo_istra'),('slo_liz',hitrost_liz),('slo_krk',hitrost_krk),('slo_pre',hitrost_pre),('slo_sav',hitrost_sav),('slo_umag',hitrost_umag),('slo_nov',hitrost_nov),('smer_liz',dir_liz),('smer_krk',dir_krk),('smer_pre',dir_pre),('smer_sav',dir_sav),('smer_umag',dir_umag),('smer_nov',dir_nov)]   
+            mydata=[('cas',ura),('var','istra'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov),('smer_liz',dir_liz),('smer_krk',dir_krk),('smer_pre',dir_pre),('smer_sav',dir_sav),('smer_nov',dir_nov)]   
   
 
             print mydata
@@ -132,7 +132,7 @@ def aladin(danes, ura, kater):
         #primorska
         elif kater == "vm-va10m_si-sw_" :   
             #MJ
-            img_mj=img.crop((134, 138, 134+52, 138+50))
+            img_mj=img.crop((126, 142, 126+69, 142+55))
             hitrost_mj = compute_average_image_color(img_mj)    
             dir_mj=direction2(np.array(img.crop((139, 146, 38+139, 146+38))))
 
@@ -146,7 +146,10 @@ def aladin(danes, ura, kater):
             hitrost_por = compute_average_image_color(img_por)
             dir_por=direction2(np.array(img.crop((116, 317, 73+116, 30+317))))
 
-            mydata=[('cas',ura),('var','slo_pri'),('slo_mj',hitrost_mj),('slo_bar',hitrost_bar),('slo_por',hitrost_por),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por)]    
+            dir_umag=direction2(np.array(img.crop((102, 342, 102+53, 342+33))))
+
+
+            mydata=[('cas',ura),('var','pri'),('mj',hitrost_mj),('bar',hitrost_bar),('por',hitrost_por),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por),('smer_umag',dir_umag)]    
             print mydata
         
        
@@ -156,8 +159,6 @@ def aladin(danes, ura, kater):
 
             
         return    
-
-aladin(datum, "036", "vm-va10m_hr-w_")
 
 
 aladin(datum, "006", "vm-va10m_hr-w_")
@@ -198,7 +199,6 @@ aladin(datum, "036", "vm-va10m_si-sw_")
 aladin(datum, "039", "vm-va10m_si-sw_")
 aladin(datum, "042", "vm-va10m_si-sw_")
 aladin(datum, "045", "vm-va10m_si-sw_")
-
 aladin(datum, "048", "vm-va10m_si-sw_")
 aladin(datum, "051", "vm-va10m_si-sw_")
 aladin(datum, "054", "vm-va10m_si-sw_")

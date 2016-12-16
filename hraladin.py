@@ -103,7 +103,7 @@ def aladin(danes, ura, kater):
         print "hitrost umag: ", hitrost_umag
         print "hitrost novigrad: ", hitrost_nov
         
-        mydata=[('cas',ura),('var','hr'),('hr_liz',hitrost_liz),('hr_krk',hitrost_krk),('hr_pre',hitrost_pre),('hr_sav',hitrost_sav),('hr_umag',hitrost_umag),('hr_nov',hitrost_nov)]    
+        mydata=[('cas',ura),('var','hr'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov)]    
         
         #send data to website
         from post import post
