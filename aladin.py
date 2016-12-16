@@ -97,22 +97,22 @@ def aladin(danes, ura, kater):
             #liznjan
             img_liz=img.crop((198, 411, 57+198, 52+411))
             hitrost_liz = compute_average_image_color(img_liz)
-            dir_liz=direction2(np.array(img.crop((205, 415, 205+56, 44+415))))
+            dir_liz=direction2(np.array(img.crop((205, 415, 205+56, 54+415))))
 
             #krk
             img_krk=img.crop((453, 304, 54+453, 38+304))
             hitrost_krk = compute_average_image_color(img_krk)
-            dir_krk=direction2(np.array(img.crop((450, 300, 450+51, 300+52))))
+            dir_krk=direction2(np.array(img.crop((441, 292, 441+69, 292+65))))
 
             #pre
             img_pre=img.crop((337, 121, 62+337, 45+121))
             hitrost_pre = compute_average_image_color(img_pre)
-            dir_pre=direction2(np.array(img.crop((340, 114, 59+340, 58+114))))
+            dir_pre=direction2(np.array(img.crop((332, 105, 332+77, 105+73))))
 
             #sav
             img_sav=img.crop((19, 41, 19+21, 41+30))
             hitrost_sav = compute_average_image_color(img_sav)
-            dir_sav=direction2(np.array(img.crop((3, 36, 3+31, 36+27))))
+            dir_sav=direction2(np.array(img.crop((3, 36, 3+57, 36+64))))
 
             #umag
             img_umag=img.crop((24, 72, 24+26, 28+72))
@@ -122,7 +122,7 @@ def aladin(danes, ura, kater):
              #nov
             img_nov=img.crop((33, 135, 33+23, 135+22))
             hitrost_nov = compute_average_image_color(img_nov)
-            dir_nov=direction2(np.array(img.crop((35, 273, 35+34, 273+30))))
+            dir_nov=direction2(np.array(img.crop((32, 225, 32+74, 273+58))))
 
             mydata=[('cas',ura),('var','istra'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov),('smer_liz',dir_liz),('smer_krk',dir_krk),('smer_pre',dir_pre),('smer_sav',dir_sav),('smer_nov',dir_nov)]   
   
@@ -134,19 +134,19 @@ def aladin(danes, ura, kater):
             #MJ
             img_mj=img.crop((126, 142, 126+69, 142+55))
             hitrost_mj = compute_average_image_color(img_mj)    
-            dir_mj=direction2(np.array(img.crop((139, 146, 38+139, 146+38))))
+            dir_mj=direction2(np.array(img.crop((118, 132, 118+89, 132+66))))
 
             #barcole
             img_bar=img.crop((204, 184, 204+42, 184+36))
             hitrost_bar = compute_average_image_color(img_bar)    
-            dir_bar=direction2(np.array(img.crop((195, 171, 195+71, 171+56))))
+            dir_bar=direction2(np.array(img.crop((202, 182, 202+66, 182+58))))
 
             #portoroz
             img_por=img.crop((147, 316, 147+35, 316+33))
             hitrost_por = compute_average_image_color(img_por)
-            dir_por=direction2(np.array(img.crop((116, 317, 73+116, 30+317))))
+            dir_por=direction2(np.array(img.crop((127, 316, 127+78, 316+44))))
 
-            dir_umag=direction2(np.array(img.crop((102, 342, 102+53, 342+33))))
+            dir_umag=direction2(np.array(img.crop((102, 342, 102+56, 342+50))))
 
 
             mydata=[('cas',ura),('var','pri'),('mj',hitrost_mj),('bar',hitrost_bar),('por',hitrost_por),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por),('smer_umag',dir_umag)]    
