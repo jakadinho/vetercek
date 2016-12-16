@@ -199,3 +199,7 @@ for list in my_list:
         post(mydata)
         print mydata
         
+
+filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
+for f in filelist:
+    os.remove(f)
