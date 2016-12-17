@@ -92,19 +92,17 @@ else:
 
 
 if am_pm == '00':
-    my_list=np.arange(7, 52, 3)
+    my_list=np.arange(7, 49, 3)
 
 else :
-    my_list=np.arange(7, 52, 3)
+    my_list=np.arange(7, 49, 3)
 
     
 
 for list in my_list:
-    print list
-    ura=list    
-    link = "http://www.lamma.rete.toscana.it/models/ventoemare/wind10m_T_web_"+str(list)+".png"
+    ura=list-1
 
-    print link
+    link = "http://www.lamma.rete.toscana.it/models/ventoemare/wind10m_T_web_"+str(list)+".png"
     check=urllib.urlopen(link)
     urlcheck=check.getcode()
     if urlcheck == 200 :
