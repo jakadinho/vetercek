@@ -92,10 +92,14 @@ else:
 
 
 if am_pm == '00':
-    my_list=np.arange(7, 49, 3)
+	my_list1=np.arange(7, 38, 3)
+	my_list2=np.arange(38, 50, 1)
+	my_list=np.concatenate((my_list1, my_list2), axis
 
 else :
-    my_list=np.arange(7, 49, 3)
+	my_list1=np.arange(7, 38, 3)
+	my_list2=np.arange(38, 50, 1)
+	my_list=np.concatenate((my_list1, my_list2), axis
 
     
 
