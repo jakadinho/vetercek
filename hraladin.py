@@ -93,7 +93,12 @@ def aladin(danes, ura, kater):
         #nov
         img_nov=img.crop((285, 394, 285+43, 394+27))
         hitrost_nov = compute_average_image_color(img_nov)
-        img_nov.save("nov.jpg")
+        #por
+        img_por=img.crop((436, 220, 436+9, 220+7))
+        hitrost_por = compute_average_image_color(img_por)
+        #bar
+        img_bar=img.crop((413, 105, 413+18, 105+15))
+        hitrost_bar = compute_average_image_color(img_bar)
             
         print "cas: ", ura  
         print "hitrost liznjan: ", hitrost_liz  
@@ -102,8 +107,10 @@ def aladin(danes, ura, kater):
         print "hitrost savudrija: ", hitrost_sav
         print "hitrost umag: ", hitrost_umag
         print "hitrost novigrad: ", hitrost_nov
-        
-        mydata=[('cas',ura),('var','hr'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov)]    
+        print "hitrost portoroz: ", hitrost_por
+        print "hitrost barcole: ", hitrost_bar
+       
+        mydata=[('cas',ura),('var','hr'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov),('por',hitrost_por),('bar',hitrost_bar)]    
         
         #send data to website
         from post import post
