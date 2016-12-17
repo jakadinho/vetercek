@@ -94,17 +94,17 @@ else:
 if am_pm == '00':
 	my_list1=np.arange(7, 38, 3)
 	my_list2=np.arange(38, 50, 1)
-	my_list=np.concatenate((my_list1, my_list2), axis
+	my_list=np.concatenate((my_list1, my_list2), axis=0)
 
 else :
 	my_list1=np.arange(7, 38, 3)
 	my_list2=np.arange(38, 50, 1)
-	my_list=np.concatenate((my_list1, my_list2), axis
+	my_list=np.concatenate((my_list1, my_list2), axis=0)
 
     
-
+ura=3
 for list in my_list:
-    ura=list-1
+    ura=ura+3
 
     link = "http://www.lamma.rete.toscana.it/models/ventoemare/wind10m_T_web_"+str(list)+".png"
     check=urllib.urlopen(link)
