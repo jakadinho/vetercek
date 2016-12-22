@@ -35,34 +35,36 @@ def compute_average_image_color(img):
             if barva_zdej  == (255, 255, 255):
                 brzina.append(0)
             elif barva_zdej  == (214,226,255):
-                brzina.append(0.5)
+                brzina.append(0)
             elif barva_zdej  == (181,201,255):
-                brzina.append(3)
+                brzina.append(0.5)
             elif barva_zdej  == (127,150,255):
-                brzina.append(6.5)
+                brzina.append(3)
             elif barva_zdej  == (99,112,247):
-                brzina.append(10.5)
+                brzina.append(6.5)
             elif barva_zdej  == (0,99,255):
-                brzina.append(15.3)
+                brzina.append(10.5)
             elif barva_zdej  == (0,150,150):
-                brzina.append(20.8)
+                brzina.append(15.3)
             elif barva_zdej  == (99,255,0):
-                brzina.append(26.8)    
+                brzina.append(20.8)    
             elif barva_zdej  == (150,255,0):
-                brzina.append(33.2) 
+                brzina.append(26.8) 
             elif barva_zdej  == (198,255,51):
-                brzina.append(40.2) 
+                brzina.append(33.2) 
             elif barva_zdej  == (255,255,0):
-                brzina.append(47.4)
+                brzina.append(40.2)
             elif barva_zdej  == (255,160,0):
-                brzina.append(55.2)    
+                brzina.append(47.4)    
             elif barva_zdej  == (255,124,0):
-                brzina.append(63.3) 
+                brzina.append(55.2) 
             elif barva_zdej  == (255,25,0):
-                brzina.append(71.1) 
+                brzina.append(63.3) 
             elif barva_zdej  == (0, 1, 1):
                 pass   
-                
+ 
+
+               
     counter=collections.Counter(brzina)
     naj=counter.most_common(2)
     

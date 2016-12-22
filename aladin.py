@@ -59,6 +59,12 @@ def compute_average_image_color(img):
         hitrost=((naj[0][0]*naj[0][1])+(naj[1][0]*naj[1][1]))/((naj[0][1])+(naj[1][1]))
     else:
         hitrost = naj[0][0]
+
+    if hitrost  > 0:
+        pass
+    else:
+		hitrost = 0
+	
     return (hitrost)
 
 import datetime
