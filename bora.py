@@ -83,9 +83,9 @@ import time
 ura = int(time.strftime("%H"))
 timesaving=time.localtime()[8]
 
-if timesaving == 0 and ura > 2 and ura < 15:
+if timesaving == 0 and ura > 0 and ura < 15:
     am_pm='00'
-elif timesaving == 1 and ura > 3 and ura < 16:
+elif timesaving == 1 and ura > 1 and ura < 16:
     am_pm='00'
 else:
     am_pm='12'
