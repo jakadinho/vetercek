@@ -98,7 +98,6 @@ danes3 = datetime.date.today() + datetime.timedelta(days=3)
 danes4 = datetime.date.today() + datetime.timedelta(days=4)
 danes5 = datetime.date.today() + datetime.timedelta(days=5)
 danes6 = datetime.date.today() + datetime.timedelta(days=6)
-
 datum1 = danes.strftime('%Y_%m_%d_')
 datum2 = danes1.strftime('%Y_%m_%d_')
 datum3 = danes2.strftime('%Y_%m_%d_')
@@ -148,6 +147,8 @@ else :
 
 #test    
 #my_list=[datum1+ura7]
+
+
 
 ura=3    
 for list in my_list:
