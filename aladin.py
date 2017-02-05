@@ -120,17 +120,23 @@ def aladin(danes, ura, kater):
             hitrost_sav = compute_average_image_color(img_sav)
             dir_sav=direction2(np.array(img.crop((3, 36, 3+57, 36+64))))
 
-            #umag
-            img_umag=img.crop((24, 72, 24+26, 28+72))
-            hitrost_umag = compute_average_image_color(img_umag)
-            #dir_umag=direction2(np.array(img.crop((6, 71, 6+35, 71+25))))
-
              #nov
             img_nov=img.crop((33, 135, 33+23, 135+22))
             hitrost_nov = compute_average_image_color(img_nov)
             dir_nov=direction2(np.array(img.crop((32, 225, 32+74, 273+58))))
 
-            mydata=[('cas',ura),('var','istra'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov),('smer_liz',dir_liz),('smer_krk',dir_krk),('smer_pre',dir_pre),('smer_sav',dir_sav),('smer_nov',dir_nov)]   
+             #prm
+            img_prm=img.crop((199, 446, 199+22, 446+23))
+            hitrost_prm = compute_average_image_color(img_prm)
+            dir_prm=direction2(np.array(img.crop((173, 429, 173+54, 429+51))))
+
+             #los
+            img_los=img.crop((362, 433, 362+48, 433+18))
+            hitrost_los = compute_average_image_color(img_los)
+            dir_los=direction2(np.array(img.crop((354, 408, 354+66, 408+43))))
+
+
+            mydata=[('cas',ura),('var','istra'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('prm',hitrost_prm),('los',hitrost_los),('nov',hitrost_nov),('smer_liz',dir_liz),('smer_krk',dir_krk),('smer_pre',dir_pre),('smer_sav',dir_sav),('smer_nov',dir_nov),('smer_los',dir_los),('smer_prm',dir_prm)]   
   
 
             print mydata
@@ -162,10 +168,14 @@ def aladin(danes, ura, kater):
             hitrost_grado = compute_average_image_color(img_grado)
             dir_grado=direction2(np.array(img.crop((75, 201, 75+56, 201+42))))
 
+
+            #umag
+            img_umag=img.crop((125, 360, 125+29, 360+17))
+            hitrost_umag = compute_average_image_color(img_umag)
             dir_umag=direction2(np.array(img.crop((102, 342, 102+56, 342+50))))
 
 
-            mydata=[('cas',ura),('var','pri'),('mj',hitrost_mj),('bar',hitrost_bar),('por',hitrost_por),('lig',hitrost_lig),('grado',hitrost_grado),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por),('smer_umag',dir_umag),('smer_lig',smer_lig),('smer_grado',smer_grado)]    
+            mydata=[('cas',ura),('var','pri'),('mj',hitrost_mj),('bar',hitrost_bar),('por',hitrost_por),('lig',hitrost_lig),('umag',hitrost_umag),('grado',hitrost_grado),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por),('smer_umag',dir_umag),('smer_lig',dir_lig),('smer_grado',dir_grado)]    
             print mydata
         
        
@@ -175,6 +185,10 @@ def aladin(danes, ura, kater):
 
             
         return    
+
+
+
+
 
 
 aladin(datum, "006", "vm-va10m_hr-w_")
@@ -224,6 +238,8 @@ aladin(datum, "063", "vm-va10m_si-sw_")
 aladin(datum, "066", "vm-va10m_si-sw_")
 aladin(datum, "069", "vm-va10m_si-sw_")
 aladin(datum, "072", "vm-va10m_si-sw_")
+
+
 
 filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
 for f in filelist:
