@@ -152,10 +152,20 @@ def aladin(danes, ura, kater):
             hitrost_por = compute_average_image_color(img_por)
             dir_por=direction2(np.array(img.crop((127, 316, 127+78, 316+44))))
 
+            #lignano
+            img_lig=img.crop((0, 177, 0+24, 177+30))
+            hitrost_lig = compute_average_image_color(img_lig)
+            dir_lig=direction2(np.array(img.crop((0, 177, 0+42, 177+43))))
+
+            #grado
+            img_grado=img.crop((75, 206, 75+36, 206+23))
+            hitrost_grado = compute_average_image_color(img_grado)
+            dir_grado=direction2(np.array(img.crop((75, 201, 75+56, 201+42))))
+
             dir_umag=direction2(np.array(img.crop((102, 342, 102+56, 342+50))))
 
 
-            mydata=[('cas',ura),('var','pri'),('mj',hitrost_mj),('bar',hitrost_bar),('por',hitrost_por),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por),('smer_umag',dir_umag)]    
+            mydata=[('cas',ura),('var','pri'),('mj',hitrost_mj),('bar',hitrost_bar),('por',hitrost_por),('lig',hitrost_lig),('grado',hitrost_grado),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por),('smer_umag',dir_umag),('smer_lig',smer_lig),('smer_grado',smer_grado)]    
             print mydata
         
        
