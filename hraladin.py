@@ -66,7 +66,7 @@ datum = today.strftime('%Y%m%d')
 
 
 def aladin(danes, ura, kater):
-    link ="http://prognoza.hr/aladinHR/web_uv10_"+kater+"_"+ura+".gif"
+    link ="http://prognoza.hr/aladinHR/web_uv10_"+kater+"_"+ura+".png"
     check=urllib.urlopen(link)
     urlcheck=check.getcode()
     if urlcheck == 200 :
@@ -76,28 +76,28 @@ def aladin(danes, ura, kater):
         img = img.convert('RGB')
  
         #liznjan
-        img_liz=img.crop((586, 778, 586+60, 778+44))
+        img_liz=img.crop((294, 391, 294+34, 391+24))
         hitrost_liz = compute_average_image_color(img_liz)
         #krk
-        img_krk=img.crop((994, 619, 994+40, 619+48))
+        img_krk=img.crop((491, 307, 491+31, 307+34))
         hitrost_krk = compute_average_image_color(img_krk)
         #pre
-        img_pre=img.crop((809, 359, 809+41, 359+46))
+        img_pre=img.crop((399, 183, 399+30, 183+23))
         hitrost_pre = compute_average_image_color(img_pre)
         #sav
-        img_sav=img.crop((251, 251, 251+43, 251+38))
+        img_sav=img.crop((128, 127, 128+25, 127+18))
         hitrost_sav = compute_average_image_color(img_sav)
         #umag
-        img_umag=img.crop((252, 297, 252+45, 297+36))
+        img_umag=img.crop((123, 155, 123+24, 155+25))
         hitrost_umag = compute_average_image_color(img_umag)
         #nov
-        img_nov=img.crop((285, 394, 285+43, 394+27))
+        img_nov=img.crop((156, 268, 156+25, 268+26))
         hitrost_nov = compute_average_image_color(img_nov)
         #por
-        img_por=img.crop((436, 220, 436+9, 220+7))
+        img_por=img.crop((148, 122, 148+23, 122+18))
         hitrost_por = compute_average_image_color(img_por)
         #bar
-        img_bar=img.crop((413, 105, 413+18, 105+15))
+        img_bar=img.crop((193, 51, 193+40, 51+22))
         hitrost_bar = compute_average_image_color(img_bar)
             
         print "cas: ", ura  
