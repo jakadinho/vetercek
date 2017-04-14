@@ -70,9 +70,9 @@ def aladin(danes, ura, kater):
     check=urllib.urlopen(link)
     urlcheck=check.getcode()
     if urlcheck == 200 :
-        urllib.urlretrieve (link, ura+".gif")
+        urllib.urlretrieve (link, ura+".png")
 
-        img = Image.open(ura+".gif")
+        img = Image.open(ura+".png")
         img = img.convert('RGB')
  
         #liznjan
