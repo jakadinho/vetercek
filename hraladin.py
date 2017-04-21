@@ -4,6 +4,9 @@ import math
 import collections
 import os
 import urllib
+from dirhr import direction2
+import numpy as np
+import cv2
 
 os.chdir("temp")
 
@@ -70,52 +73,55 @@ def aladin(danes, ura, kater):
     check=urllib.urlopen(link)
     urlcheck=check.getcode()
     if urlcheck == 200 :
-        urllib.urlretrieve (link, ura+".png")
+        urllib.urlretrieve (link, ura+".gif")
 
-        img = Image.open(ura+".png")
+        img = Image.open(ura+".gif")
         img = img.convert('RGB')
  
         #liznjan
         img_liz=img.crop((294, 391, 294+34, 391+24))
         hitrost_liz = compute_average_image_color(img_liz)
+        dir_liz=direction2(np.array(img.crop((277, 369, 277+78, 369+62))))
         #krk
         img_krk=img.crop((491, 307, 491+31, 307+34))
         hitrost_krk = compute_average_image_color(img_krk)
+        dir_krk=direction2(np.array(img.crop((469, 287, 469+94, 287+93))))
         #pre
         img_pre=img.crop((399, 183, 399+30, 183+23))
         hitrost_pre = compute_average_image_color(img_pre)
+        dir_pre=direction2(np.array(img.crop((366, 158, 366+95, 158+70))))
         #sav
         img_sav=img.crop((128, 127, 128+25, 127+18))
         hitrost_sav = compute_average_image_color(img_sav)
+        dir_sav=direction2(np.array(img.crop((115, 104, 115+69, 104+66))))
         #umag
         img_umag=img.crop((123, 155, 123+24, 155+25))
         hitrost_umag = compute_average_image_color(img_umag)
+        dir_umag=direction2(np.array(img.crop((113, 135, 113+69, 135+66))))
         #nov
         img_nov=img.crop((156, 268, 156+25, 268+26))
         hitrost_nov = compute_average_image_color(img_nov)
+        dir_nov=direction2(np.array(img.crop((140, 239, 140+69, 239+66))))
         #por
         img_por=img.crop((148, 122, 148+23, 122+18))
         hitrost_por = compute_average_image_color(img_por)
+        dir_por=direction2(np.array(img.crop((128, 92, 128+69, 92+66))))
         #bar
         img_bar=img.crop((193, 51, 193+40, 51+22))
         hitrost_bar = compute_average_image_color(img_bar)
+        dir_bar=direction2(np.array(img.crop((124, 51, 124+104, 51+58))))
             
         print "cas: ", ura  
-        print "hitrost liznjan: ", hitrost_liz  
-        print "hitrost krk: ", hitrost_krk  
-        print "hitrost preluka: ", hitrost_pre 
-        print "hitrost savudrija: ", hitrost_sav
-        print "hitrost umag: ", hitrost_umag
-        print "hitrost novigrad: ", hitrost_nov
-        print "hitrost portoroz: ", hitrost_por
-        print "hitrost barcole: ", hitrost_bar
+        print "pre: ", dir_pre  
+
        
-        mydata=[('cas',ura),('var','hr'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov),('por',hitrost_por),('bar',hitrost_bar)]    
+        mydata=[('cas',ura),('var','hr'),('liz',hitrost_liz),('smer_liz',dir_liz),('krk',hitrost_krk),('smer_krk',dir_krk),('pre',hitrost_pre),('smer_pre',dir_pre),('sav',hitrost_sav),('smer_sav',dir_sav),('umag',hitrost_umag),('smer_umag',dir_umag),('nov',hitrost_nov),('smer_nov',dir_nov),('por',hitrost_por),('smer_por',dir_por),('bar',hitrost_bar),('smer_bar',dir_bar)]    
         
+
         #send data to website
         from post import post
         post(mydata)
-            
+        #print mydata    
 
             
         return    
