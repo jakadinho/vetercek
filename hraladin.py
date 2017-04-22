@@ -111,11 +111,16 @@ def aladin(danes, ura, kater):
         hitrost_bar = compute_average_image_color(img_bar)
         dir_bar=direction2(np.array(img.crop((124, 51, 124+104, 51+58))))
             
+        #prm
+        img_prm=img.crop((275, 413, 275+17, 413+16))
+        hitrost_prm = compute_average_image_color(img_prm)
+        dir_prm=direction2(np.array(img.crop((235, 373, 235+81, 373+78))))
+
         print "cas: ", ura  
         print "pre: ", dir_pre  
 
        
-        mydata=[('cas',ura),('var','hr'),('liz',hitrost_liz),('smer_liz',dir_liz),('krk',hitrost_krk),('smer_krk',dir_krk),('pre',hitrost_pre),('smer_pre',dir_pre),('sav',hitrost_sav),('smer_sav',dir_sav),('umag',hitrost_umag),('smer_umag',dir_umag),('nov',hitrost_nov),('smer_nov',dir_nov),('por',hitrost_por),('smer_por',dir_por),('bar',hitrost_bar),('smer_bar',dir_bar)]    
+        mydata=[('cas',ura),('var','hr'),('liz',hitrost_liz),('smer_liz',dir_liz),('krk',hitrost_krk),('smer_krk',dir_krk),('pre',hitrost_pre),('smer_pre',dir_pre),('sav',hitrost_sav),('smer_sav',dir_sav),('umag',hitrost_umag),('smer_umag',dir_umag),('nov',hitrost_nov),('smer_nov',dir_nov),('por',hitrost_por),('smer_por',dir_por),('bar',hitrost_bar),('smer_bar',dir_bar),('prm',hitrost_prm),('smer_prm',dir_prm)]    
         
 
         #send data to website

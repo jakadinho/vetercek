@@ -130,11 +130,11 @@ else :
 #my_list=[datum1+ura7]
 
 
-
+hitrost_pre=0
 ura=-3    
 for list in my_list:
     ura=ura+3    
-    link = "http://bora.gekom.hr/png_wrf/Kvarner/clflo_"+list+".png"
+    link = "http://bora.gekom.hr/png_wrf/Kvarner/clfme_"+list+".png"
     print link
 
     check=urllib.urlopen(link)
@@ -149,77 +149,16 @@ for list in my_list:
 
         #preluka
         img_pre=img.crop((163, 63, 163+92, 63+71))
-        hitrost_pre = round(compute_average_image_color(img_pre))        
+        hitrost_pre =hitrost_pre+ round(compute_average_image_color(img_pre))        
 
 
         
-        mydata=[('cas',ura),('var','bora_o'),('pre',hitrost_pre)]    
+mydata=[('cas','0'),('var','bora_o'),('pre',hitrost_pre)]    
         
-        from post import post
-        post(mydata)
-        print mydata
-   
-
-
-## srednja oblacnost
-ura=-3    
-obl_me_pre=0   
-for list in my_list:
-    ura=ura+3    
-    link = "http://bora.gekom.hr/png_wrf/Kvarner/clfmi_"+list+".png"
-    print link
-
-    check=urllib.urlopen(link)
-    urlcheck=check.getcode()
-    if urlcheck == 200 :
-        urllib.urlretrieve (link, str(ura)+".png")
-
-        img = Image.open(str(ura)+".png")
-        img = img.convert('RGB')
- 
-     
-
-        #preluka
-        img_pre=img.crop((163, 63, 163+92, 63+71))
-        obl_me_pre =obl_me_pre+ round(compute_average_image_color(img_pre))        
-
-        
-mydata=[('cas','med'),('var','bora_om'),('pre',obl_me_pre)]    
-        
-from post import post
-post(mydata)
+#from post import post
+#post(mydata)
 print mydata
         
-
-## visoka oblacnost
-ura=-3    
-obl_hi_pre=0   
-for list in my_list:
-    ura=ura+3    
-    link = "http://bora.gekom.hr/png_wrf/Kvarner/clfhi_"+list+".png"
-    print link
-
-    check=urllib.urlopen(link)
-    urlcheck=check.getcode()
-    if urlcheck == 200 :
-        urllib.urlretrieve (link, str(ura)+".png")
-
-        img = Image.open(str(ura)+".png")
-        img = img.convert('RGB')
- 
-     
-
-        #preluka
-        img_pre=img.crop((163, 63, 163+92, 63+71))
-        obl_hi_pre =obl_hi_pre+ round(compute_average_image_color(img_pre))        
-
-        
-mydata=[('cas','hi'),('var','bora_oh'),('pre',obl_hi_pre)]    
-        
-from post import post
-post(mydata)
-print mydata
-     
 
 filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
 for f in filelist:
