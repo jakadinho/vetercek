@@ -138,12 +138,12 @@ if am_pm == '00':
     datum6+ura1,datum6+ura2,datum6+ura3,datum6+ura4,datum6+ura5,datum6+ura6,datum6+ura7,datum6+ura8])
 
 else :
-    my_list.extend([datum1+ura7,datum1+ura8,
+    my_list.extend([datum1+ura1,datum1+ura2,datum1+ura3,datum1+ura4,datum1+ura5,datum1+ura6,datum1+ura7,datum1+ura8,
     datum2+ura1,datum2+ura2,datum2+ura3,datum2+ura4,datum2+ura5,datum2+ura6,datum2+ura7,datum2+ura8,
     datum3+ura1,datum3+ura2,datum3+ura3,datum3+ura4,datum3+ura5,datum3+ura6,datum3+ura7,datum3+ura8,
     datum4+ura1,datum4+ura2,datum4+ura3,datum4+ura4,datum4+ura5,datum4+ura6,datum4+ura7,datum4+ura8,
-    datum5+ura1,datum5+ura2,datum5+ura3,datum5+ura4,datum5+ura5,datum5+ura6,datum5+ura7,datum5+ura8,    
-	datum6+ura1,datum6+ura2,datum6+ura3,datum6+ura4,datum6+ura5,datum6+ura6,datum6+ura7,datum6+ura8])
+    datum5+ura1,datum5+ura2,datum5+ura3,datum5+ura4,datum5+ura5,datum5+ura6,datum5+ura7,datum5+ura8,
+    datum6+ura1,datum6+ura2,datum6+ura3,datum6+ura4,datum6+ura5,datum6+ura6,datum6+ura7,datum6+ura8])
 
 #test    
 #my_list=[datum1+ura7]
