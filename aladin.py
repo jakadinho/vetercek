@@ -177,7 +177,28 @@ def aladin(danes, ura, kater):
 
             mydata=[('cas',ura),('var','pri'),('mj',hitrost_mj),('bar',hitrost_bar),('por',hitrost_por),('lig',hitrost_lig),('umag',hitrost_umag),('grado',hitrost_grado),('smer_mj',dir_mj),('smer_bar',dir_bar),('smer_por',dir_por),('smer_umag',dir_umag),('smer_lig',dir_lig),('smer_grado',dir_grado)]    
             print mydata
+
+
+        #gorejnska
+        elif kater == "vm-va10m_si-nw_" :   
+            #bohinj
+            img_boh=img.crop((266, 285, 266+20, 285+11))
+            hitrost_boh = compute_average_image_color(img_boh)    
+            dir_boh=direction2(np.array(img.crop((212, 247, 212+139, 247+104))))
         
+            mydata=[('cas',ura),('var','gor'),('boh',hitrost_boh),('smer_boh',dir_boh)]    
+            print mydata
+
+
+        #stajerska
+        elif kater == "vm-va10m_si-ne_" :   
+            #murska
+            img_mur=img.crop((466, 210, 466+17, 210+11))
+            hitrost_mur = compute_average_image_color(img_mur)    
+            dir_mur=direction2(np.array(img.crop((439, 171, 439+75, 171+69))))
+        
+            mydata=[('cas',ura),('var','sta'),('mur',hitrost_mur),('smer_mur',dir_mur)]    
+            print mydata
        
 		#send data to website
         from post import post
@@ -185,8 +206,6 @@ def aladin(danes, ura, kater):
 
             
         return    
-
-
 
 
 
@@ -239,6 +258,54 @@ aladin(datum, "066", "vm-va10m_si-sw_")
 aladin(datum, "069", "vm-va10m_si-sw_")
 aladin(datum, "072", "vm-va10m_si-sw_")
 
+
+aladin(datum, "006", "vm-va10m_si-nw_")
+aladin(datum, "009", "vm-va10m_si-nw_")
+aladin(datum, "012", "vm-va10m_si-nw_")
+aladin(datum, "015", "vm-va10m_si-nw_")
+aladin(datum, "018", "vm-va10m_si-nw_")
+aladin(datum, "021", "vm-va10m_si-nw_")
+aladin(datum, "024", "vm-va10m_si-nw_")
+aladin(datum, "027", "vm-va10m_si-nw_")
+aladin(datum, "030", "vm-va10m_si-nw_")
+aladin(datum, "033", "vm-va10m_si-nw_")
+aladin(datum, "036", "vm-va10m_si-nw_")
+aladin(datum, "039", "vm-va10m_si-nw_")
+aladin(datum, "042", "vm-va10m_si-nw_")
+aladin(datum, "045", "vm-va10m_si-nw_")
+aladin(datum, "048", "vm-va10m_si-nw_")
+aladin(datum, "051", "vm-va10m_si-nw_")
+aladin(datum, "054", "vm-va10m_si-nw_")
+aladin(datum, "057", "vm-va10m_si-nw_")
+aladin(datum, "060", "vm-va10m_si-nw_")
+aladin(datum, "063", "vm-va10m_si-nw_")
+aladin(datum, "066", "vm-va10m_si-nw_")
+aladin(datum, "069", "vm-va10m_si-nw_")
+aladin(datum, "072", "vm-va10m_si-nw_")
+
+aladin(datum, "006", "vm-va10m_si-ne_")
+aladin(datum, "009", "vm-va10m_si-ne_")
+aladin(datum, "012", "vm-va10m_si-ne_")
+aladin(datum, "015", "vm-va10m_si-ne_")
+aladin(datum, "018", "vm-va10m_si-ne_")
+aladin(datum, "021", "vm-va10m_si-ne_")
+aladin(datum, "024", "vm-va10m_si-ne_")
+aladin(datum, "027", "vm-va10m_si-ne_")
+aladin(datum, "030", "vm-va10m_si-ne_")
+aladin(datum, "033", "vm-va10m_si-ne_")
+aladin(datum, "036", "vm-va10m_si-ne_")
+aladin(datum, "039", "vm-va10m_si-ne_")
+aladin(datum, "042", "vm-va10m_si-ne_")
+aladin(datum, "045", "vm-va10m_si-ne_")
+aladin(datum, "048", "vm-va10m_si-ne_")
+aladin(datum, "051", "vm-va10m_si-ne_")
+aladin(datum, "054", "vm-va10m_si-ne_")
+aladin(datum, "057", "vm-va10m_si-ne_")
+aladin(datum, "060", "vm-va10m_si-ne_")
+aladin(datum, "063", "vm-va10m_si-ne_")
+aladin(datum, "066", "vm-va10m_si-ne_")
+aladin(datum, "069", "vm-va10m_si-ne_")
+aladin(datum, "072", "vm-va10m_si-ne_")
 
 
 filelist = [ f for f in os.listdir(".") if f.endswith(".png") ]
