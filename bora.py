@@ -199,8 +199,15 @@ for list in my_list:
         img_bar=img.crop((203, 103, 203+10, 103+10))
         hitrost_bar = round(compute_average_image_color(img_bar)) 
 
-        
-        mydata=[('cas',ura),('var','bora'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov),('por',hitrost_por),('mj',hitrost_mj),('bar',hitrost_bar)]    
+        #prm
+        img_prm=img.crop((247, 348, 247+11, 348+12))
+        hitrost_prm = round(compute_average_image_color(img_prm)) 
+ 
+        #los
+        img_los=img.crop((321, 393, 321+11, 393+9))
+        hitrost_los = round(compute_average_image_color(img_los)) 
+       
+        mydata=[('cas',ura),('var','bora'),('liz',hitrost_liz),('krk',hitrost_krk),('pre',hitrost_pre),('sav',hitrost_sav),('umag',hitrost_umag),('nov',hitrost_nov),('por',hitrost_por),('mj',hitrost_mj),('bar',hitrost_bar),('prm',hitrost_prm),('los',hitrost_los)]    
         
         from post import post
         post(mydata)
